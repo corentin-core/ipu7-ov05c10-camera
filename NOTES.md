@@ -63,6 +63,8 @@ Two `Bulk` errors show up at every normal power-up, with a `failed to read VTS` 
 
 Observed in 155 and 156, snap and deb alike, with no upstream bug filed. Hence the PipeWire setting in the README.
 
+It crashes inside its own capture thread about a second after opening the device, while frames are flowing: not a starvation problem. Reproduced with the loopback feeding a plain black frame at 10 fps.
+
 ## Colours
 
 The shipped tuning profile enables the colour correction matrix that libcamera's uncalibrated profile leaves out. Mean channel spread went from 18 to 27 out of 255, on one frame of one scene.
