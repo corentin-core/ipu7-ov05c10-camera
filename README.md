@@ -112,7 +112,9 @@ The patch teaches libcamera this sensor's gain model. Without it the picture com
 
 ## More
 
-[NOTES.md](NOTES.md) covers what was missing and why, the design constraints behind the supervisor, and the known defects. [src/PROVENANCE.md](src/PROVENANCE.md) documents each kernel patch, and is where to look first when a kernel update breaks the camera.
+[NOTES.md](NOTES.md) covers what was missing and why, the design constraints behind the supervisor, and the known defects.
+
+[src/PROVENANCE.md](src/PROVENANCE.md) documents each kernel patch, and is where to look first when a kernel update breaks the camera.
 
 ## Licence
 
