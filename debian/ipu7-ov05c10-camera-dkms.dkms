@@ -1,0 +1,20 @@
+PACKAGE_NAME="ipu7-ov05c10-camera"
+PACKAGE_VERSION="#MODULE_VERSION#"
+AUTOINSTALL="yes"
+BUILD_EXCLUSIVE_CONFIG="CONFIG_V4L2_CCI_I2C"
+
+MAKE[0]="make KERNELRELEASE=$kernelver KERNEL_SRC=$kernel_source_dir"
+CLEAN="make KERNELRELEASE=$kernelver KERNEL_SRC=$kernel_source_dir clean"
+
+BUILT_MODULE_NAME[0]="ov05c10"
+BUILT_MODULE_LOCATION[0]="ov05c10"
+DEST_MODULE_LOCATION[0]="/updates"
+
+BUILT_MODULE_NAME[1]="intel_cvs"
+BUILT_MODULE_LOCATION[1]="intel_cvs"
+DEST_MODULE_LOCATION[1]="/updates"
+
+# Replaces the module shipped by the distribution, which ignores the Lunar Lake CVS.
+BUILT_MODULE_NAME[2]="ipu-bridge"
+BUILT_MODULE_LOCATION[2]="ipu-bridge"
+DEST_MODULE_LOCATION[2]="/updates"

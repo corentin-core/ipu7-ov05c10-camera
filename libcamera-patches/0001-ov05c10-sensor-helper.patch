@@ -1,0 +1,22 @@
+diff --git a/src/ipa/libipa/camera_sensor_helper.cpp b/src/ipa/libipa/camera_sensor_helper.cpp
+index e3e3e53..becce96 100644
+--- a/src/ipa/libipa/camera_sensor_helper.cpp
++++ b/src/ipa/libipa/camera_sensor_helper.cpp
+@@ -653,6 +653,17 @@ public:
+ };
+ REGISTER_CAMERA_SENSOR_HELPER("imx708", CameraSensorHelperImx708)
+ 
++class CameraSensorHelperOv05c10 : public CameraSensorHelper
++{
++public:
++	CameraSensorHelperOv05c10()
++	{
++		/* The gain register holds a code where 0x10 is unity gain. */
++		gain_ = AnalogueGainLinear{ 1, 0, 0, 16 };
++	}
++};
++REGISTER_CAMERA_SENSOR_HELPER("ov05c10", CameraSensorHelperOv05c10)
++
+ class CameraSensorHelperOv2685 : public CameraSensorHelper
+ {
+ public:

@@ -1,0 +1,9 @@
+debian/.debhelper/
+debian/files
+debian/*.substvars
+debian/*.debhelper.log
+debian/ipu7-camera-ondemand/
+debian/ipu7-ov05c10-camera-dkms/
+debian/debhelper-build-stamp
+__pycache__/
+*.pyc

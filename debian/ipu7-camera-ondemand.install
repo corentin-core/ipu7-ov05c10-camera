@@ -1,0 +1,5 @@
+conf/v4l2loopback.conf        etc/modprobe.d/
+conf/71-ipu7-hide-raw.rules   lib/udev/rules.d/
+conf/60-dma-heap.rules        lib/udev/rules.d/
+conf/ov05c10.yaml             usr/share/libcamera/ipa/simple/
+conf/defaults/ipu7-camera-ondemand  etc/default/

@@ -1,0 +1,20 @@
+[Unit]
+Description=On-demand IPU7 camera bridge to /dev/video42
+After=systemd-modules-load.service
+ConditionPathExists=/dev/video42
+
+[Service]
+# For a libcamera outside the system paths, point GST_PLUGIN_PATH at it.
+EnvironmentFile=-/etc/default/ipu7-camera-ondemand
+ExecStart=/usr/bin/ipu7-camera-ondemand
+
+# The supervisor does not touch the sensor on startup, only on virtual node
+# events, so a restart is harmless to the USB bridge.
+Restart=on-failure
+RestartSec=5
+
+# Leave time for a clean pipeline teardown before giving up.
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

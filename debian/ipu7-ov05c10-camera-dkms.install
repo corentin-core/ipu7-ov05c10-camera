@@ -1,0 +1,5 @@
+src/Makefile          usr/src/ipu7-ov05c10-camera-1.0/
+src/PROVENANCE.md     usr/src/ipu7-ov05c10-camera-1.0/
+src/ov05c10/*         usr/src/ipu7-ov05c10-camera-1.0/ov05c10/
+src/intel_cvs/*       usr/src/ipu7-ov05c10-camera-1.0/intel_cvs/
+src/ipu-bridge/*      usr/src/ipu7-ov05c10-camera-1.0/ipu-bridge/

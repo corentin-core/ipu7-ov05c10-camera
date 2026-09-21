@@ -1,0 +1,4 @@
+# Keep the IPU7 raw capture nodes away from applications: they are only
+# useful to libcamera, which reaches the sensor through the sub-devices.
+# Numbered 71 to run after 70-uaccess.rules, which grants the session ACL.
+SUBSYSTEM=="video4linux", ATTR{name}=="Intel IPU7 ISYS Capture*", TAG-="uaccess", GROUP="video", MODE="0660"

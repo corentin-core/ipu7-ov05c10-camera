@@ -1,0 +1,3 @@
+# Uncomment when libcamera 0.6+ is not installed in the system paths, which
+# is the case on every Ubuntu release before 26.04.
+#GST_PLUGIN_PATH=/usr/local/lib/x86_64-linux-gnu/gstreamer-1.0

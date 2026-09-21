@@ -1,0 +1,22 @@
+# Profil de reglage libcamera pour le capteur OmniVision OV05C10.
+# Reprend uncalibrated.yaml en activant la matrice de correction
+# colorimetrique, absente par defaut, d'ou des couleurs delavees.
+#
+# La matrice n'est PAS mesuree sur mire colorimetrique : c'est un
+# rehaussement de saturation raisonnable, dont chaque ligne somme a 1
+# pour ne pas deplacer la balance des blancs, qui est deja juste.
+%YAML 1.1
+---
+version: 1
+algorithms:
+  - BlackLevel:
+  - Awb:
+  - Ccm:
+      ccms:
+        - ct: 6500
+          ccm: [  1.50, -0.40, -0.10,
+                 -0.25,  1.45, -0.20,
+                  0.00, -0.45,  1.45 ]
+  - Adjust:
+  - Agc:
+...

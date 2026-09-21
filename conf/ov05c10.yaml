@@ -1,0 +1,23 @@
+# libcamera tuning profile for the OmniVision OV05C10.
+#
+# Same as uncalibrated.yaml but with the colour correction matrix enabled,
+# which the default profile leaves out, hence its washed-out colours.
+#
+# The matrix is NOT measured against a colour target: it is a reasoned
+# saturation boost whose rows each sum to 1, so it does not move the white
+# balance, which is already correct on this sensor.
+%YAML 1.1
+---
+version: 1
+algorithms:
+  - BlackLevel:
+  - Awb:
+  - Ccm:
+      ccms:
+        - ct: 6500
+          ccm: [  1.50, -0.40, -0.10,
+                 -0.25,  1.45, -0.20,
+                  0.00, -0.45,  1.45 ]
+  - Adjust:
+  - Agc:
+...

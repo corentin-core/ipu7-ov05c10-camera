@@ -1,0 +1,36 @@
+Source: ipu7-ov05c10-camera
+Section: kernel
+Priority: optional
+Maintainer: corentin-core <110186540+corentin-core@users.noreply.github.com>
+Build-Depends: debhelper-compat (= 13), dh-dkms
+Standards-Version: 4.6.2
+Rules-Requires-Root: no
+Homepage: https://github.com/corentin-core/ipu7-ov05c10-camera
+
+Package: ipu7-ov05c10-camera-dkms
+Architecture: all
+Depends: ${misc:Depends}, dkms
+Description: kernel drivers for OV05C10 cameras behind an Intel IPU7
+ Three drivers Ubuntu does not ship, needed to make the built-in camera of
+ Intel Lunar Lake laptops work: the OV05C10 sensor, the Intel CVS bridge that
+ arbitrates the CSI-2 link, and a replacement ipu-bridge that knows about it.
+ .
+ Two of them carry local patches. See
+ /usr/src/ipu7-ov05c10-camera-${binary:Version}/PROVENANCE.md.
+
+Package: ipu7-camera-ondemand
+Architecture: all
+Depends: ${misc:Depends},
+         python3,
+         v4l-utils,
+         gstreamer1.0-tools,
+         gstreamer1.0-plugins-base,
+         gstreamer1.0-plugins-good
+Recommends: ipu7-ov05c10-camera-dkms, v4l2loopback-dkms
+Description: on-demand virtual webcam fed by an IPU7 camera
+ Exposes the camera as a plain V4L2 device, /dev/video42, that browsers and
+ conferencing apps accept. The sensor is powered up only while an application
+ has the device open, and powered down again a few seconds after it closes.
+ .
+ Needs libcamera 0.6 or later with software ISP support: Ubuntu 26.04 and
+ later ship it, earlier releases need a build from source.

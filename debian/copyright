@@ -1,0 +1,32 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: ipu7-ov05c10-camera
+Source: https://github.com/corentin-core/ipu7-ov05c10-camera
+
+Files: src/ov05c10/*
+Copyright: 2024 Intel Corporation
+License: GPL-2
+Comment: from https://github.com/intel/ipu6-drivers
+
+Files: src/intel_cvs/* src/ipu-bridge/*
+Copyright: 2026 Intel Corporation
+License: GPL-2
+Comment: from the mainline Linux kernel, with local patches
+
+Files: ondemand/* conf/* debian/*
+Copyright: 2026 corentin-core
+License: GPL-2+
+
+License: GPL-2
+ This program is free software; you can redistribute it and/or modify it
+ under the terms of the GNU General Public License version 2 as published by
+ the Free Software Foundation.
+ .
+ On Debian systems, the full text is in /usr/share/common-licenses/GPL-2.
+
+License: GPL-2+
+ This program is free software; you can redistribute it and/or modify it
+ under the terms of the GNU General Public License as published by the Free
+ Software Foundation, either version 2 of the License, or (at your option)
+ any later version.
+ .
+ On Debian systems, the full text is in /usr/share/common-licenses/GPL-2.
