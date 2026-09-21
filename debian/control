@@ -26,7 +26,11 @@ Depends: ${misc:Depends},
          gstreamer1.0-tools,
          gstreamer1.0-plugins-base,
          gstreamer1.0-plugins-good
-Recommends: ipu7-ov05c10-camera-dkms, v4l2loopback-dkms
+# Versioned so it is only pulled where the distribution ships a libcamera new
+# enough for the IPU7. On older releases apt skips it, which is what we want:
+# the 0.2 plugin would clash with a libcamera built under /usr/local.
+Recommends: ipu7-ov05c10-camera-dkms,
+            gstreamer1.0-libcamera (>= 0.6)
 Description: on-demand virtual webcam fed by an IPU7 camera
  Exposes the camera as a plain V4L2 device, /dev/video42, that browsers and
  conferencing apps accept. The sensor is powered up only while an application
@@ -34,3 +38,7 @@ Description: on-demand virtual webcam fed by an IPU7 camera
  .
  Needs libcamera 0.6 or later with software ISP support: Ubuntu 26.04 and
  later ship it, earlier releases need a build from source.
+ .
+ Also needs a v4l2loopback that builds against your kernel. Ubuntu's 0.12.7
+ does not build on 7.0, so it is deliberately not a dependency; see the
+ README for the upstream version.

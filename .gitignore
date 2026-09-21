@@ -7,3 +7,4 @@ debian/ipu7-ov05c10-camera-dkms/
 debian/debhelper-build-stamp
 __pycache__/
 *.pyc
+debian/*.debhelper

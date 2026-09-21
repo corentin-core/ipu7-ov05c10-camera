@@ -1,3 +1,4 @@
-# libcamera's software ISP needs the dma-buf heap. Numbered 60 so the tag is
-# set before 70-uaccess.rules, which is what applies the session ACL.
+# libcamera's software ISP needs the dma-buf heap, and logind only grants the
+# session ACL to tagged devices. Numbered 60 because the same rule at 99 left
+# the tag set but the ACL unapplied: observed, whatever the documented order.
 SUBSYSTEM=="dma_heap", KERNEL=="system", TAG+="uaccess"

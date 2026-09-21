@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+# modules-load.d only fires at boot, and the unit has
+# ConditionPathExists=/dev/video42, so without this a fresh install does
+# nothing until the next reboot, silently.
+if [ "$1" = "configure" ]; then
+    modprobe v4l2loopback 2>/dev/null || \
+      echo "ipu7-camera-ondemand: could not load v4l2loopback; see README" >&2
+fi
+
+#DEBHELPER#

@@ -13,6 +13,12 @@ ExecStart=/usr/bin/ipu7-camera-ondemand
 Restart=on-failure
 RestartSec=5
 
+# Without this, systemd SIGTERMs every process in the cgroup on stop, the
+# pipeline included, bypassing the supervisor's SIGINT teardown and risking
+# the USB bridge lockup this whole design avoids. Only the supervisor gets
+# the signal; it stops the pipeline itself.
+KillMode=mixed
+
 # Leave time for a clean pipeline teardown before giving up.
 TimeoutStopSec=30
 

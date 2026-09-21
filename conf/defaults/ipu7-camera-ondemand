@@ -1,3 +1,9 @@
-# Uncomment when libcamera 0.6+ is not installed in the system paths, which
-# is the case on every Ubuntu release before 26.04.
+# Both lines are needed when libcamera 0.6+ is not installed in the system
+# paths, which is the case on every Ubuntu release before 26.04.
+#
+# GST_PLUGIN_PATH points GStreamer at the libcamera plugin.
+# LIBCAMERA_IPA_CONFIG_PATH points libcamera at the tuning profile this
+# package installs: a build under /usr/local searches its own prefix and
+# would otherwise ignore it, silently leaving the colours washed out.
 #GST_PLUGIN_PATH=/usr/local/lib/x86_64-linux-gnu/gstreamer-1.0
+#LIBCAMERA_IPA_CONFIG_PATH=/usr/share/libcamera/ipa

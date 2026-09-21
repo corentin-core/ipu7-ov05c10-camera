@@ -1,10 +1,24 @@
 #!/usr/bin/make -f
 
+# La version du module doit etre la meme a trois endroits : dkms.conf, le
+# chemin /usr/src et le script de post-installation. On la derive du
+# changelog pour qu'un seul endroit fasse foi.
+MODVER := $(shell dpkg-parsechangelog -SVersion | cut -d- -f1)
+DKMSDIR := debian/ipu7-ov05c10-camera-dkms/usr/src/ipu7-ov05c10-camera-$(MODVER)
+
 %:
-	dh $@
+	dh $@ --with dkms
+
+# Sans -V, dh_dkms laisse le marqueur #MODULE_VERSION# tel quel : le
+# dkms.conf atterrit dans un repertoire distinct des sources et le paquet
+# ne construit rien.
+override_dh_dkms:
+	dh_dkms -V
 
 override_dh_auto_install:
 	dh_auto_install
+	install -d $(DKMSDIR)
+	cp -a src/Makefile src/PROVENANCE.md src/ov05c10 src/intel_cvs src/ipu-bridge $(DKMSDIR)/
 	install -D -m 755 ondemand/ipu7-camera-ondemand.py \
 	  debian/ipu7-camera-ondemand/usr/bin/ipu7-camera-ondemand
 	install -D -m 644 conf/modules-load.conf \
